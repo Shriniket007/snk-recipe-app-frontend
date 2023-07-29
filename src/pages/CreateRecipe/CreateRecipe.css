@@ -1,0 +1,45 @@
+.showcase-form-R {
+  margin: 0 auto;
+  /* position: relative; */
+  /* top: 60px; */
+  height: 450px;
+  width: 400px;
+  padding: 40px;
+  z-index: 100;
+  justify-self: flex-end;
+  animation: slideInFromRight 1s ease-in;
+}
+
+.showcase-form-R .form-control {
+  margin: 10px 0;
+}
+
+.showcase-form-R input[type="text"],
+.showcase-form-R input[type="password"] {
+  border: 0;
+  border-bottom: 1px solid #b4becb;
+  width: 100%;
+  padding: 3px;
+  font-size: 16px;
+}
+
+.showcase-form-R textarea {
+  border: 1px solid black;
+  border-bottom: 1px solid #b4becb;
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.showcase-form-R input:focus {
+  outline: none;
+}
+
+.showcase-form-R input[type="number"] {
+  border: 0;
+  border-bottom: 1px solid #b4becb;
+}
+
+.c-recipe {
+  margin-top: 30px;
+}
