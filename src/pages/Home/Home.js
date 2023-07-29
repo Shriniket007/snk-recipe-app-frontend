@@ -43,7 +43,7 @@ const Home = () => {
   const saveRecipe = async (recipeID) => {
     try {
       const response = await axios.put(
-        "/recipes",
+        "https://dull-plum-angler-cap.cyclic.app/recipes",
         { recipeID, userID },
         { headers: { Authorization: cookies.access_token } }
       );
@@ -82,22 +82,6 @@ const Home = () => {
                   {isRecipeSaved(recipe._id) ? "Saved" : "Save"}{" "}
                 </button>
               </div>
-
-              {/* <h2>{recipe.name}</h2> */}
-              {/* <button
-                onClick={() => saveRecipe(recipe._id)}
-                disabled={isRecipeSaved(recipe._id)}
-              >
-                {isRecipeSaved(recipe._id) ? "Saved" : "Save"}{" "}
-              </button> */}
-              {/* 
-              <div className="instructions">
-                <p>{recipe.instructions}</p>
-              </div> */}
-
-              {/* <img src={recipe.imageUrl} alt={recipe.name} /> */}
-
-              {/* <p>cooking Time: {recipe.cookingTime} (minutes)</p> */}
             </div>
           ))}
         </div>

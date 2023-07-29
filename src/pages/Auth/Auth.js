@@ -25,7 +25,7 @@ const Login = () => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "https://dull-plum-angler-cap.cyclic.app//auth/login",
+        "https://dull-plum-angler-cap.cyclic.app/auth/login",
         {
           username,
           password,
@@ -60,10 +60,13 @@ const Register = () => {
     event.preventDefault(); //submit without refreshing the page
 
     try {
-      await axios.post("/auth/register", {
-        username,
-        password,
-      });
+      await axios.post(
+        "https://dull-plum-angler-cap.cyclic.app/auth/register",
+        {
+          username,
+          password,
+        }
+      );
       alert("Registration complete! Now you have to login.");
     } catch (err) {
       console.error(err);

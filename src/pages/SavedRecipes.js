@@ -9,7 +9,9 @@ const SavedRecipes = () => {
   useEffect(() => {
     const fetchSavedRecipes = async () => {
       try {
-        const response = await axios.get(`/savedRecipes/${userID}`);
+        const response = await axios.get(
+          `https://dull-plum-angler-cap.cyclic.app/savedRecipes/${userID}`
+        );
         if (response?.data?.savedRecipes) {
           setSavedRecipes(response.data.savedRecipes);
         }
