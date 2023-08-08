@@ -15,7 +15,7 @@ const Auth = () => {
 
 const Login = () => {
   const [username, setUsername] = useState("");
-  const [password, setPasseord] = useState("");
+  const [password, setPassword] = useState("");
 
   const [_, setCookies] = useCookies(["access_token"]);
 
@@ -24,7 +24,7 @@ const Login = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
+      const result = await axios.post(
         "https://dull-plum-angler-cap.cyclic.app/auth/login",
         {
           username,
@@ -32,8 +32,8 @@ const Login = () => {
         }
       );
 
-      setCookies("access_token", response.data.token); //storin the token sent into access_token
-      window.localStorage.setItem("userID", response.data.userID);
+      setCookies("access_token", result.data.token); //storin the token sent into access_token
+      window.localStorage.setItem("userID", result.data.userID);
       navigate("/");
     } catch (err) {
       console.error(err);
@@ -41,20 +41,41 @@ const Login = () => {
   };
 
   return (
-    <Form
-      username={username}
-      setUsername={setUsername}
-      password={password}
-      setPasseord={setPasseord}
-      label="Login"
-      onSubmit={onSubmit}
-    />
+    <div className="showcase-form-A card">
+      <form onSubmit={onSubmit}>
+        <h2>Login</h2>
+        <div className="form-control">
+          <label htmlFor="Username">Username</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 
 const Register = () => {
   const [username, setUsername] = useState("");
-  const [password, setPasseord] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [_, setCookies] = useCookies(["access_token"]);
+  const navigate = useNavigate();
 
   const onSubmit = async (event) => {
     event.preventDefault(); //submit without refreshing the page
@@ -74,29 +95,9 @@ const Register = () => {
   };
 
   return (
-    <Form
-      username={username}
-      setUsername={setUsername}
-      password={password}
-      setPasseord={setPasseord}
-      label="Register"
-      onSubmit={onSubmit}
-    />
-  );
-};
-
-const Form = ({
-  username,
-  setUsername,
-  password,
-  setPasseord,
-  label,
-  onSubmit,
-}) => {
-  return (
     <div className="showcase-form-A card">
       <form onSubmit={onSubmit}>
-        <h2>{label}</h2>
+        <h2>Register</h2>
         <div className="form-control">
           <label htmlFor="Username">Username</label>
           <input
@@ -112,11 +113,11 @@ const Form = ({
             type="password"
             id="password"
             value={password}
-            onChange={(event) => setPasseord(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          {label}
+          Register
         </button>
       </form>
     </div>

@@ -28,7 +28,7 @@ const CreateRecipe = () => {
   //for changing the value of the ingredient which is already added //empty input
   const handleIngredientChange = (event, idx) => {
     const { value } = event.target;
-    const ingredients = recipe.ingredients;
+    const ingredients = [...recipe.ingredients];
     ingredients[idx] = value;
     setRecipe({ ...recipe, ingredients: ingredients });
   };
@@ -93,7 +93,7 @@ const CreateRecipe = () => {
           {/* <label htmlFor="instructions">Instructions</label> */}
           <textarea
             name="instructions"
-            id="instructions"
+            value={recipe.instructions}
             className="form-control"
             placeholder="Instructions"
             onChange={handleChange}

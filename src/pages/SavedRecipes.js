@@ -10,7 +10,7 @@ const SavedRecipes = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `https://dull-plum-angler-cap.cyclic.app/savedRecipes/${userID}`
+          `https://dull-plum-angler-cap.cyclic.app/recipes/savedRecipes/${userID}`
         );
         if (response?.data?.savedRecipes) {
           setSavedRecipes(response.data.savedRecipes);
@@ -27,23 +27,21 @@ const SavedRecipes = () => {
     <div>
       <h1 className="r-head">Saved Recipes</h1>
 
-      <div className="sec">
-        <div class="products">
-          {savedRecipes.map((recipe) => (
-            <div key={recipe._id} class="card">
-              <div class="img">
-                <img src={recipe.imageUrl} alt={recipe.name} />
-              </div>
-              <div class="desc">
-                <p> cooking Time: {recipe.cookingTime} (minutes)</p>
-              </div>
-              <div class="title">{recipe.name}</div>
-              <div class="price">
-                <p>{recipe.instructions}</p>
-              </div>{" "}
+      <div className="products sec">
+        {savedRecipes.map((recipe) => (
+          <div className="card" key={recipe._id}>
+            <div className="img">
+              <img src={recipe.imageUrl} alt={recipe.name} />
             </div>
-          ))}
-        </div>
+            <div className="desc">
+              <p> cooking Time: {recipe.cookingTime} (minutes)</p>
+            </div>
+            <div className="title">{recipe.name}</div>
+            <div className="price">
+              <p>{recipe.instructions}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

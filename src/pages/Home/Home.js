@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../../hooks/useGetUserID";
-import { useCookies } from "react-cookie";
 import "./Home.css";
+import { useCookies } from "react-cookie";
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -44,7 +44,10 @@ const Home = () => {
     try {
       const response = await axios.put(
         "https://dull-plum-angler-cap.cyclic.app/recipes",
-        { recipeID, userID },
+        {
+          recipeID,
+          userID,
+        },
         { headers: { Authorization: cookies.access_token } }
       );
       setSavedRecipes(response.data.savedRecipes);
@@ -59,23 +62,23 @@ const Home = () => {
     <div>
       <h1 className="r-head">Recipes</h1>
       <div className="sec">
-        <div class="products">
+        <div className="products">
           {recipes.map((recipe) => (
-            <div key={recipe._id} class="card">
-              <div class="img">
+            <div key={recipe._id} className="card">
+              <div className="img">
                 <img src={recipe.imageUrl} alt={recipe.name} />
               </div>
-              <div class="desc">
+              <div className="desc">
                 <p> cooking Time: {recipe.cookingTime} (minutes)</p>
               </div>
-              <div class="title">{recipe.name}</div>
+              <div className="title">{recipe.name}</div>
 
-              <div class="box">
-                <div class="price">
+              <div className="box">
+                <div className="price">
                   <p>{recipe.instructions}</p>
                 </div>{" "}
                 <button
-                  class="btn"
+                  className="btn"
                   onClick={() => saveRecipe(recipe._id)}
                   disabled={isRecipeSaved(recipe._id)}
                 >
@@ -92,18 +95,4 @@ const Home = () => {
 
 export default Home;
 
-<section class="sec">
-  <div class="products">
-    <div class="card">
-      <div class="img">
-        <img src="" alt="" />
-      </div>
-      <div class="desc">Women</div>
-      <div class="title">Lady sandal</div>
-      <div class="box">
-        <div class="price">$50</div>
-        <div class="btn">Buy now</div>
-      </div>
-    </div>
-  </div>
-</section>;
+// https://dull-plum-angler-cap.cyclic.app
