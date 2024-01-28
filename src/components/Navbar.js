@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className="header">
       <Link href="#home" className="logo">
-        Portfolio
+        SNK Recipe App
       </Link>
 
       <i
